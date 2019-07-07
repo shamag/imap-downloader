@@ -1,0 +1,13 @@
+[package]
+name = "imap-downloader"
+version = "0.1.0"
+authors = ["Andrey Chugunov <andrey.chugunov@goods.ru>"]
+edition = "2018"
+
+[dependencies]
+imap="*"
+native-tls="*"
+mailparse="*"
+structopt="*"
+rpassword="*"
+pbr="*"
