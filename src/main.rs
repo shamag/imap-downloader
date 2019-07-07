@@ -54,7 +54,6 @@ fn main() -> imap::error::Result<(), > {
 }
 
 fn fetch_dir(opts: FetchOpts) -> imap::error::Result<(), > {
-    // let domain = "imap.yandex.ru";
     let domain = &opts.domain;
     let out_path = Path::new(&opts.output);
     std::fs::create_dir_all(out_path)?;
@@ -76,7 +75,6 @@ fn fetch_dir(opts: FetchOpts) -> imap::error::Result<(), > {
     let messages = imap_session.fetch("1:*", "RFC822")?;
     let _res: Vec<std::io::Result<(), >> = messages.iter()
         .map(|m| {
-            // dbg!(m.message);
             let body = if let Some(body) = m.body() {
                 body
             } else {
@@ -89,7 +87,6 @@ fn fetch_dir(opts: FetchOpts) -> imap::error::Result<(), > {
             file.write_all(body)
             })
         .collect();
-    // dbg!(res);
     imap_session.logout()?;
     pb.finish_print("done");
     Ok(())
